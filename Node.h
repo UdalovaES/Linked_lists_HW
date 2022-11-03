@@ -8,16 +8,18 @@ public:
     int Data;
     Node* Next = nullptr;
 
-    //constructors
+    //constructor
     Node(int data);
+
     std::string ToString();
 };
 
 class LinkedList {
 public:
     Node* Head;
-    void AddElement(Node* point);
-    std::string ToString();
+    void addNode(Node* point);
+    std::string printLinkedList();
+    void deleteElement(int value);
 };
 
 #endif //HW5_LINKED_LISTS_NODE_H

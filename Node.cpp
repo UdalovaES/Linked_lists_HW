@@ -10,7 +10,7 @@ std::string Node::ToString() {
 }
 
 // добавление элемента
-void LinkedList::AddElement(Node *point) {
+void LinkedList::addNode(Node *point) {
     if (Head == nullptr) {
         Head = point; //point - эл-т, который мы добавляем
         return;
@@ -24,7 +24,7 @@ void LinkedList::AddElement(Node *point) {
 }
 
 // вывод всех элементов
-std::string LinkedList::ToString() {
+std::string LinkedList::printLinkedList() {
     std::string result;
     if (Head == nullptr) {
         result += "Linked list is empty";
@@ -38,4 +38,36 @@ std::string LinkedList::ToString() {
     }
     result += std::to_string(p -> Data);
     return result;
+}
+
+//удаление элементов
+void LinkedList::deleteElement(int value) {
+    if (Head == nullptr) {
+        return;
+    }
+
+    // удаление первого элемента
+    Node *p = Head;
+    while (p->Data == value) {
+        Head = p ->Next;
+        delete p;
+        p = Head;
+        if (p == nullptr) {
+            return;
+        }
+    }
+
+    // удаление остальных элементов
+    Node *Prev = Head;
+    p = Head;
+    while (p != nullptr) {
+        if (p->Data == value) {
+            Prev->Next = p->Next; //отвязка удаляемого элемента
+            delete p;
+            p = Prev -> Next;
+        } else {
+            Prev = p;
+            p = p -> Next;
+        }
+    }
 }
