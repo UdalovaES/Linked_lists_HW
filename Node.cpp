@@ -1,6 +1,8 @@
 #include "Node.h"
+#include <algorithm>
 
-Node::Node(int data) {
+Node::Node(int data)
+{
     Data = data;
 }
 
@@ -71,3 +73,23 @@ void LinkedList::deleteElement(int value) {
         }
     }
 }
+
+/*
+void LinkedList::LinkedList()
+{
+    Node* current_element = Head;
+    while (current_element)
+    {
+        Node* next_element = current_element ->
+    }
+    delete[] data; // deallocate memory storing pointers to rows
+    data = nullptr;
+    m = 0;
+    n = 0;
+}
+
+LinkedList::~LinkedList()
+{
+    deallocate();
+}
+ */

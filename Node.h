@@ -15,11 +15,15 @@ public:
 };
 
 class LinkedList {
+    /*
+private:
+    void deallocate(); // function for class internal use for memory deallocation
+     */
 public:
     Node* Head;
     void addNode(Node* point);
     std::string printLinkedList();
     void deleteElement(int value);
+    //virtual ~LinkedList();
 };
-
 #endif //HW5_LINKED_LISTS_NODE_H

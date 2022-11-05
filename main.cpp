@@ -1,23 +1,28 @@
 #include <iostream>
-#include "node.h"
+#include "Node.h"
+#include <string>
+#include <fstream>
 
-int main (){
-    Node* pointer1 = new Node(8);
-    Node* pointer2 = new Node(5);
-    Node* pointer3 = new Node(9);
-    Node* pointer4 = new Node(8);
-    Node* pointer5 = new Node(8);
 
-    std::cout << pointer1 -> ToString() << std::endl;
-
+int main (int argc, char** argv){
+    if (argc != 2) {
+        std::cout << "Enter only the path to the file" << std::endl;
+        return -1;
+    }
+    std::string filename = argv[1];
     LinkedList MyList = LinkedList(); //type_of_class name = constructor
-    std::cout << "List before adding: " << MyList.printLinkedList() << std::endl;
-    MyList.addNode(pointer1);
-    MyList.addNode(pointer2);
-    MyList.addNode(pointer3);
-    MyList.addNode(pointer4);
-    MyList.addNode(pointer5);
-    std::cout << "List after adding: " << MyList.printLinkedList() << std::endl;
-    MyList.deleteElement(8);
-    std::cout << "List after deleting: " << MyList.printLinkedList() << std::endl;
+    std::cout << "List before adding: \n" << MyList.printLinkedList() << std::endl;
+
+    std::ifstream f(filename);
+    std::string current_line;
+    int last;
+
+    while (getline(f, current_line)) {
+        last = std::stoi(current_line);
+           MyList.addNode(new Node(last));
+    }
+
+    std::cout << "List after adding: \n" << MyList.printLinkedList() << std::endl;
+    MyList.deleteElement(last);
+    std::cout << "List after deleting: \n" << MyList.printLinkedList() << std::endl;
 }
