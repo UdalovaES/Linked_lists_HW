@@ -74,22 +74,12 @@ void LinkedList::deleteElement(int value) {
     }
 }
 
-/*
-void LinkedList::LinkedList()
-{
-    Node* current_element = Head;
-    while (current_element)
-    {
-        Node* next_element = current_element ->
+LinkedList::~LinkedList() {
+    std::cout << "destructor did not allow a memory leak" << std::endl;
+    Node *p = Head;
+    while (p) {
+        Node *nextp = p->Next;
+        delete p;
+        p = nextp;
     }
-    delete[] data; // deallocate memory storing pointers to rows
-    data = nullptr;
-    m = 0;
-    n = 0;
 }
-
-LinkedList::~LinkedList()
-{
-    deallocate();
-}
- */
